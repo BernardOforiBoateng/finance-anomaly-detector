@@ -1,11 +1,13 @@
 #!/bin/bash
+set -e
 
-# Install Python dependencies
+echo "Installing Python dependencies..."
 pip install -r requirements.txt
 
-# Install Node.js and build frontend
+echo "Installing Node.js dependencies..."
 cd frontend
-npm install
+npm ci --only=production
+echo "Building React frontend..."
 npm run build
 cd ..
 
