@@ -6,6 +6,8 @@ Real-time fraud detection API with model serving
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, validator
 from typing import List, Dict, Optional
 import numpy as np
@@ -16,6 +18,7 @@ from pathlib import Path
 from datetime import datetime
 import logging
 import uvicorn
+import os
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -30,16 +33,16 @@ app = FastAPI(
 # CORS middleware for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000", 
-        "http://127.0.0.1:3000",
-        "https://*.vercel.app",
-        "https://vercel.app"
-    ],
+    allow_origins=["*"],  # Allow all origins for Render deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve React frontend static files
+frontend_build_path = Path(__file__).parent.parent / "frontend" / "build"
+if frontend_build_path.exists():
+    app.mount("/static", StaticFiles(directory=str(frontend_build_path / "static")), name="static")
 
 # Global variables for model and preprocessing
 model = None
@@ -346,6 +349,17 @@ async def get_system_stats():
         "uptime": "Available on startup",
         "last_updated": datetime.now().isoformat()
     }
+
+@app.get("/{catch_all:path}")
+async def serve_react_app(catch_all: str):
+    """Serve React app for all non-API routes"""
+    frontend_build_path = Path(__file__).parent.parent / "frontend" / "build"
+    index_file = frontend_build_path / "index.html"
+    
+    if index_file.exists():
+        return FileResponse(str(index_file))
+    else:
+        return {"message": "Frontend not built. Run 'npm run build' in frontend directory."}
 
 if __name__ == "__main__":
     import os
