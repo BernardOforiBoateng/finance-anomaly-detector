@@ -1,0 +1,36 @@
+{
+  "model_name": "Improved XGBoost (Current_Best)",
+  "model_file": "xgboost_improved_current_best_20250619_172109.pkl",
+  "improvement_date": "2025-06-19T17:21:09.057615",
+  "features": [
+    "V3",
+    "V7",
+    "v_max",
+    "Amount",
+    "V1_V2_interaction",
+    "amount_rolling_mean",
+    "V2",
+    "v_min",
+    "amount_rolling_std",
+    "V1_V3_interaction",
+    "v_std",
+    "V1",
+    "amount_log",
+    "V1_V3_interaction",
+    "Amount_V3_interaction"
+  ],
+  "test_performance": {
+    "roc_auc": 0.9220482404972529,
+    "pr_auc": 0.13015955616129313,
+    "fraud_detection_rate": 0.7319587628865979,
+    "false_alarm_rate": 0.09279873384331311,
+    "precision": 0.013275991024682124,
+    "confusion_matrix": {
+      "tn": 51588,
+      "fp": 5277,
+      "fn": 26,
+      "tp": 71
+    }
+  },
+  "config_used": "Current_Best"
+}

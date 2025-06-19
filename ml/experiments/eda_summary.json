@@ -1,0 +1,35 @@
+{
+  "imbalance_ratio": 587.7467700258397,
+  "significant_features_count": 13,
+  "total_features": 41,
+  "high_correlation_pairs": 1,
+  "feature_types": {
+    "v_features": 30,
+    "amount_features": 4,
+    "time_features": 3,
+    "interaction_features": 2,
+    "other_features": 4
+  },
+  "top_features_by_effect_size": [
+    "V3",
+    "v_std",
+    "v_max",
+    "V1_V3_interaction",
+    "v_min",
+    "V2",
+    "Amount",
+    "amount_log",
+    "V1",
+    "V1_V2_interaction",
+    "amount_rolling_mean",
+    "amount_rolling_std",
+    "V7",
+    "v_mean",
+    "V16",
+    "V15",
+    "V27",
+    "V4",
+    "V18",
+    "V20"
+  ]
+}

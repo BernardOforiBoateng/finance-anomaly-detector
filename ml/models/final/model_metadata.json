@@ -1,0 +1,73 @@
+{
+  "model_name": "XGBoost",
+  "model_file": "final_model_20250619_165925.pkl",
+  "features": [
+    "V3",
+    "V7",
+    "v_max",
+    "Amount",
+    "V1_V2_interaction",
+    "amount_rolling_mean",
+    "V2",
+    "v_min",
+    "amount_rolling_std",
+    "V1_V3_interaction",
+    "v_std",
+    "V1",
+    "amount_log",
+    "V1_V3_interaction",
+    "Amount_V3_interaction"
+  ],
+  "feature_count": 15,
+  "test_performance": {
+    "roc_auc": 0.9234492798552549,
+    "pr_auc": 0.11804380521490569,
+    "confusion_matrix": {
+      "tn": 51543,
+      "fp": 5322,
+      "fn": 25,
+      "tp": 72
+    },
+    "sensitivity": 0.7422680412371134,
+    "specificity": 0.9064099182273806,
+    "precision": 0.013348164627363738,
+    "f1_score": 0.02622473137861956,
+    "fraud_detection_rate": 0.7422680412371134,
+    "false_alarm_rate": 0.09359008177261936
+  },
+  "training_date": "2025-06-19T16:59:26.000515",
+  "training_results": {
+    "Random Forest": {
+      "best_model": "RandomForestClassifier(class_weight='balanced', max_depth=10,\n                       min_samples_split=5, n_jobs=-1, random_state=42)",
+      "best_params": {
+        "max_depth": 10,
+        "min_samples_split": 5,
+        "n_estimators": 100
+      },
+      "cv_roc_auc": 0.865103694781237,
+      "cv_folds": 3
+    },
+    "XGBoost": {
+      "best_model": "XGBClassifier(base_score=None, booster=None, callbacks=None,\n              colsample_bylevel=None, colsample_bynode=None,\n              colsample_bytree=None, device=None, early_stopping_rounds=None,\n              enable_categorical=False, eval_metric='logloss',\n              feature_types=None, feature_weights=None, gamma=None,\n              grow_policy=None, importance_type=None,\n              interaction_constraints=None, learning_rate=0.1, max_bin=None,\n              max_cat_threshold=None, max_cat_to_onehot=None,\n              max_delta_step=None, max_depth=3, max_leaves=None,\n              min_child_weight=None, missing=nan, monotone_constraints=None,\n              multi_strategy=None, n_estimators=100, n_jobs=-1,\n              num_parallel_tree=None, ...)",
+      "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "n_estimators": 100
+      },
+      "cv_roc_auc": 0.8909892911786533,
+      "cv_folds": 3,
+      "cv_roc_auc_5fold": 0.8844912822386292,
+      "cv_std_5fold": 0.005448337252445347
+    },
+    "LightGBM": {
+      "best_model": "LGBMClassifier(learning_rate=0.2, max_depth=6, n_jobs=-1, random_state=42,\n               scale_pos_weight=np.float64(587.2352941176471), verbosity=-1)",
+      "best_params": {
+        "learning_rate": 0.2,
+        "max_depth": 6,
+        "n_estimators": 100
+      },
+      "cv_roc_auc": 0.680035821590422,
+      "cv_folds": 3
+    }
+  }
+}

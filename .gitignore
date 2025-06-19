@@ -1,0 +1,15 @@
+# Large ML files (download separately)
+*.pkl
+*.npy
+ml/data/processed/*.csv
+ml/data/raw/*.csv
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.env
+
+# IDE
+.vscode/
+.idea/

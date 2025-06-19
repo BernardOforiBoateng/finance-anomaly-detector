@@ -1,0 +1,158 @@
+{
+  "model_type": "XGBoost Fraud Detector",
+  "analysis_date": "2025-06-19T17:24:00.458439",
+  "total_features": 15,
+  "performance_metrics": {
+    "roc_optimal_threshold": "0.22122109",
+    "pr_optimal_threshold": "0.97795343",
+    "roc_optimal_tpr": 0.9381443298969072,
+    "roc_optimal_fpr": 0.22669480348193088,
+    "pr_optimal_precision": 0.4230769230769231,
+    "pr_optimal_recall": 0.1134020618556701
+  },
+  "feature_importance": [
+    {
+      "feature": "V3",
+      "importance": 0.25450682640075684
+    },
+    {
+      "feature": "Amount",
+      "importance": 0.13055527210235596
+    },
+    {
+      "feature": "V1_V3_interaction",
+      "importance": 0.10201951116323471
+    },
+    {
+      "feature": "V2",
+      "importance": 0.09993676841259003
+    },
+    {
+      "feature": "V1",
+      "importance": 0.0826549082994461
+    },
+    {
+      "feature": "V1_V2_interaction",
+      "importance": 0.07776381820440292
+    },
+    {
+      "feature": "Amount_V3_interaction",
+      "importance": 0.061900146305561066
+    },
+    {
+      "feature": "v_min",
+      "importance": 0.04133302718400955
+    },
+    {
+      "feature": "V7",
+      "importance": 0.034853123128414154
+    },
+    {
+      "feature": "v_std",
+      "importance": 0.032571546733379364
+    },
+    {
+      "feature": "v_max",
+      "importance": 0.03052362985908985
+    },
+    {
+      "feature": "amount_rolling_std",
+      "importance": 0.029812976717948914
+    },
+    {
+      "feature": "amount_rolling_mean",
+      "importance": 0.021568402647972107
+    },
+    {
+      "feature": "amount_log",
+      "importance": 0.0
+    },
+    {
+      "feature": "V1_V3_interaction",
+      "importance": 0.0
+    }
+  ],
+  "threshold_analysis": [
+    {
+      "threshold": 0.1,
+      "precision": 0.00421921577619812,
+      "recall": 0.9484536082474226,
+      "f1_score": 0.008401059263994155,
+      "fraud_detection_rate": 0.9484536082474226,
+      "false_alarm_rate": 0.3818341686450365,
+      "flagged_transactions": 21805
+    },
+    {
+      "threshold": 0.2,
+      "precision": 0.006493969885106686,
+      "recall": 0.9381443298969072,
+      "f1_score": 0.012898653437278525,
+      "fraud_detection_rate": 0.9381443298969072,
+      "false_alarm_rate": 0.24482546381781412,
+      "flagged_transactions": 14013
+    },
+    {
+      "threshold": 0.3,
+      "precision": 0.008422120750887874,
+      "recall": 0.8556701030927835,
+      "f1_score": 0.016680064308681672,
+      "fraud_detection_rate": 0.8556701030927835,
+      "false_alarm_rate": 0.17184559922623757,
+      "flagged_transactions": 9855
+    },
+    {
+      "threshold": 0.4,
+      "precision": 0.010508849557522125,
+      "recall": 0.7835051546391752,
+      "f1_score": 0.020739527902851686,
+      "fraud_detection_rate": 0.7835051546391752,
+      "false_alarm_rate": 0.12584190626923414,
+      "flagged_transactions": 7232
+    },
+    {
+      "threshold": 0.5,
+      "precision": 0.013275991024682124,
+      "recall": 0.7319587628865979,
+      "f1_score": 0.026078971533516987,
+      "fraud_detection_rate": 0.7319587628865979,
+      "false_alarm_rate": 0.09279873384331311,
+      "flagged_transactions": 5348
+    },
+    {
+      "threshold": 0.6,
+      "precision": 0.016577403723539913,
+      "recall": 0.6701030927835051,
+      "f1_score": 0.03235440517670483,
+      "fraud_detection_rate": 0.6701030927835051,
+      "false_alarm_rate": 0.0678097247867757,
+      "flagged_transactions": 3921
+    },
+    {
+      "threshold": 0.7,
+      "precision": 0.023134328358208955,
+      "recall": 0.6391752577319587,
+      "f1_score": 0.044652502700756214,
+      "fraud_detection_rate": 0.6391752577319587,
+      "false_alarm_rate": 0.046038863976083706,
+      "flagged_transactions": 2680
+    },
+    {
+      "threshold": 0.8,
+      "precision": 0.03305785123966942,
+      "recall": 0.5360824742268041,
+      "f1_score": 0.06227544910179641,
+      "fraud_detection_rate": 0.5360824742268041,
+      "false_alarm_rate": 0.026747560010551306,
+      "flagged_transactions": 1573
+    },
+    {
+      "threshold": 0.9,
+      "precision": 0.06304728546409807,
+      "recall": 0.3711340206185567,
+      "f1_score": 0.10778443113772454,
+      "fraud_detection_rate": 0.3711340206185567,
+      "false_alarm_rate": 0.009408247603974325,
+      "flagged_transactions": 571
+    }
+  ]
+}

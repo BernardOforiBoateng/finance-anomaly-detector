@@ -1,0 +1,24 @@
+{
+  "total_original_features": 41,
+  "selected_features_count": 15,
+  "reduction_percentage": 63.41463414634146,
+  "selection_criteria": "Statistical significance (p < 0.05) + Effect size (d > 0.2)",
+  "interactions_added": 2,
+  "final_features": [
+    "V3",
+    "V7",
+    "v_max",
+    "Amount",
+    "V1_V2_interaction",
+    "amount_rolling_mean",
+    "V2",
+    "v_min",
+    "amount_rolling_std",
+    "V1_V3_interaction",
+    "v_std",
+    "V1",
+    "amount_log",
+    "V1_V3_interaction",
+    "Amount_V3_interaction"
+  ]
+}

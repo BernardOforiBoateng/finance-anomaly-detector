@@ -1,0 +1,16 @@
+feature,importance
+V3,0.25450683
+Amount,0.13055527
+V1_V3_interaction,0.10201951
+V2,0.09993677
+V1,0.08265491
+V1_V2_interaction,0.07776382
+Amount_V3_interaction,0.061900146
+v_min,0.041333027
+V7,0.034853123
+v_std,0.032571547
+v_max,0.03052363
+amount_rolling_std,0.029812977
+amount_rolling_mean,0.021568403
+amount_log,0.0
+V1_V3_interaction,0.0
