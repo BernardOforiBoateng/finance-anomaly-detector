@@ -247,9 +247,9 @@ async def startup_event():
     """Load model on startup"""
     load_model_and_metadata()
 
-@app.get("/")
-async def root():
-    """Health check endpoint"""
+@app.get("/api/health")
+async def api_health():
+    """API health check endpoint"""
     return {
         "message": "Personal Finance Anomaly Detector API",
         "status": "healthy",
@@ -385,9 +385,24 @@ async def get_system_stats():
         "last_updated": datetime.now().isoformat()
     }
 
+@app.get("/")
+async def serve_react_root():
+    """Serve React app for root"""
+    frontend_build_path = Path(__file__).parent.parent / "frontend" / "build"
+    index_file = frontend_build_path / "index.html"
+    
+    if index_file.exists():
+        return FileResponse(str(index_file))
+    else:
+        return {"message": "Frontend not built. Run 'npm run build' in frontend directory."}
+
 @app.get("/{catch_all:path}")
 async def serve_react_app(catch_all: str):
     """Serve React app for all non-API routes"""
+    # Skip API routes
+    if catch_all.startswith("api/") or catch_all in ["health", "predict", "stats", "model"]:
+        raise HTTPException(status_code=404, detail="Not found")
+    
     frontend_build_path = Path(__file__).parent.parent / "frontend" / "build"
     index_file = frontend_build_path / "index.html"
     
