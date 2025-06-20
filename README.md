@@ -326,8 +326,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Bernard Ofori Boateng**
 - 🐙 [GitHub](https://github.com/BernardOforiBoateng)
 - 💼 [LinkedIn](https://linkedin.com/in/bernardoforiboateng)
-- 📧 [Email](mailto:bernard.ofori.boateng@example.com)
-- 🌐 [Portfolio](https://bernardoforiboateng.com)
+- 📧 [Email](mailto:bbofori90@gmail.com)
+- 🌐 [Portfolio](https://bernardoboateng.netlify.app)
 
 ---
 
