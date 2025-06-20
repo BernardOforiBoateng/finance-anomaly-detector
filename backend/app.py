@@ -10,9 +10,17 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, validator
 from typing import List, Dict, Optional
-import numpy as np
-import pandas as pd
-import joblib
+# ML libraries will be imported only if available
+try:
+    import numpy as np
+    import pandas as pd
+    import joblib
+    ML_AVAILABLE = True
+except ImportError:
+    ML_AVAILABLE = False
+    np = None
+    pd = None
+    joblib = None
 import json
 from pathlib import Path
 from datetime import datetime
@@ -111,9 +119,9 @@ def load_model_and_metadata():
         if not models_dir.exists():
             models_dir = Path(__file__).parent.parent / 'ml' / 'models' / 'final'
         
-        model_files = list(models_dir.glob("*.pkl"))
-        if not model_files:
-            logger.warning("No trained model found! Using demo mode.")
+        model_files = list(models_dir.glob("*.pkl")) if models_dir.exists() else []
+        if not model_files or not ML_AVAILABLE:
+            logger.warning("No trained model found or ML libraries unavailable! Using demo mode.")
             # Set up demo mode with mock data
             model = None
             feature_names = [f"V{i}" for i in range(1, 15)] + ["Amount"]
@@ -158,7 +166,7 @@ def load_model_and_metadata():
         logger.error(f"Failed to load model: {e}")
         raise
 
-def preprocess_transaction(transaction: TransactionRequest) -> np.ndarray:
+def preprocess_transaction(transaction: TransactionRequest):
     """Preprocess a single transaction for prediction"""
     # Extract base features
     base_features = {
@@ -210,6 +218,8 @@ def preprocess_transaction(transaction: TransactionRequest) -> np.ndarray:
         else:
             feature_vector.append(0.0)  # Default value for missing features
     
+    if not ML_AVAILABLE:
+        return feature_vector
     return np.array(feature_vector).reshape(1, -1)
 
 def get_risk_level(probability: float) -> str:
