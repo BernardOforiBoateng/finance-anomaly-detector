@@ -6,7 +6,7 @@ pip install -r requirements.txt
 
 echo "Installing Node.js dependencies..."
 cd frontend
-npm ci --only=production
+npm install
 echo "Building React frontend..."
 npm run build
 cd ..
