@@ -25,20 +25,23 @@ A production-ready fraud detection system that identifies fraudulent financial t
 ### **🌐 Try the Live Application:**
 - **Live Application**: [https://anomaly-detector-g2ex.onrender.com](https://anomaly-detector-g2ex.onrender.com)
 - **API Documentation**: [https://anomaly-detector-g2ex.onrender.com/docs](https://anomaly-detector-g2ex.onrender.com/docs)
-- **Health Check**: [https://anomaly-detector-g2ex.onrender.com/health](https://anomaly-detector-g2ex.onrender.com/health)
+- **API Health Check**: [https://anomaly-detector-g2ex.onrender.com/api/health](https://anomaly-detector-g2ex.onrender.com/api/health)
 
 ### **📱 Features Available:**
-- **Real-time Fraud Detection** - Analyze individual transactions
-- **Batch Processing Dashboard** - Test multiple transactions with analytics
+- **Real-time Fraud Detection** - Analyze individual transactions with instant results
+- **Interactive Dashboard** - Clean React interface with Material-UI components
 - **Model Insights** - View performance metrics and feature importance
-- **Risk Classification** - LOW/MEDIUM/HIGH/CRITICAL risk levels
+- **Risk Classification** - LOW/MEDIUM/HIGH/CRITICAL risk levels with confidence scoring
+- **Sample Data Generators** - Test with normal and suspicious transaction patterns
+- **Responsive Design** - Works seamlessly on desktop and mobile devices
 
 ### **📊 Understanding the Input Fields:**
 The V1-V14 fields represent **anonymized principal components** from PCA (Principal Component Analysis) transformation:
-- **V1-V14**: These are dimensionality-reduced features that capture patterns in the original transaction data
+- **V1-V14**: Dimensionality-reduced features that capture patterns in original transaction data
 - **Amount**: The actual transaction amount in dollars
-- **Why PCA?**: For privacy protection, the original features (like merchant, location, time) have been transformed into these mathematical components
-- **Sample Values**: Use the "Normal Sample" or "Suspicious Sample" buttons to see typical value ranges
+- **Privacy Protection**: Original features (merchant, location, time) are transformed into mathematical components
+- **User-Friendly Interface**: Helpful tooltips and sample generators explain the anonymized features
+- **Sample Values**: Use "Normal Sample" or "Suspicious Sample" buttons to see typical value ranges
 
 ---
 
@@ -51,22 +54,24 @@ The V1-V14 fields represent **anonymized principal components** from PCA (Princi
 - **Metrics**: ROC-AUC, PR-AUC, confusion matrix analysis
 
 ### **Backend Architecture**
-- **Framework**: FastAPI (Python 3.10+)
+- **Framework**: FastAPI (Python 3.11+) with async support
 - **API Design**: RESTful with automatic OpenAPI documentation
 - **Processing**: Real-time prediction + batch processing endpoints
-- **Deployment**: Docker containerized on Railway
+- **Model Serving**: XGBoost with fallback demo mode for deployment reliability
+- **Deployment**: Docker containerized on Render
 
 ### **Frontend Application**
 - **Framework**: React 18 + TypeScript
-- **UI Library**: Material-UI for professional design
-- **Charts**: Recharts for data visualizations
-- **Deployment**: Vercel with global CDN
+- **UI Library**: Material-UI for professional design and responsive components
+- **Features**: Interactive tooltips, sample data generators, real-time results
+- **User Experience**: Clean interface with helpful explanations for technical features
+- **Deployment**: Served directly from FastAPI backend
 
 ### **DevOps & Infrastructure**
-- **Containerization**: Docker for consistent deployments
-- **CI/CD**: GitHub Actions for automated testing
-- **Hosting**: Railway (backend) + Vercel (frontend)
-- **Monitoring**: Built-in health checks and error handling
+- **Containerization**: Docker with multi-stage builds for optimized deployment
+- **Hosting**: Render with automatic deployments from GitHub
+- **Monitoring**: Built-in health checks, error handling, and performance metrics
+- **CI/CD**: Automated deployments with GitHub integration
 
 ---
 
@@ -202,12 +207,32 @@ curl -X POST "http://localhost:8000/predict" \
 
 ## 🔧 **Deployment Guide**
 
-### **Option 1: One-Click Deploy**
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.app/template)
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new)
+### **Current Deployment**
+The application is deployed on **Render** with the following configuration:
+- **Backend + Frontend**: Single container deployment
+- **Docker Build**: Multi-stage build process
+- **Automatic Deployments**: Connected to GitHub main branch
+- **Custom Domain**: Available at anomaly-detector-g2ex.onrender.com
 
-### **Option 2: Manual Deployment**
-Detailed deployment instructions available in [`DEPLOYMENT.md`](DEPLOYMENT.md)
+### **Local Development**
+```bash
+# Backend
+cd backend
+pip install -r requirements.txt
+python app.py
+
+# Frontend (if developing separately)
+cd frontend
+npm install
+npm start
+```
+
+### **Docker Deployment**
+```bash
+# Build and run with Docker
+docker build -t fraud-detector .
+docker run -p 8000:8000 fraud-detector
+```
 
 ---
 
@@ -247,12 +272,29 @@ Detailed deployment instructions available in [`DEPLOYMENT.md`](DEPLOYMENT.md)
 
 ---
 
+## 🚀 **Recent Improvements**
+
+### **User Experience Enhancements**
+- **Interactive Tooltips**: Added helpful explanations for PCA-transformed features
+- **Sample Data Generators**: One-click normal and suspicious transaction examples
+- **Info Alerts**: Clear explanations of anonymized V1-V14 fields
+- **Responsive Design**: Improved mobile and tablet experience
+
+### **Technical Improvements**
+- **Routing Fix**: Proper frontend serving from root URL
+- **API Restructure**: Moved health checks to `/api/health` endpoint
+- **Error Handling**: Better fallback modes for deployment reliability
+- **Performance**: Optimized prediction response times under 200ms
+
+---
+
 ## 🛡️ **Security & Privacy**
 
-- **Data Privacy**: No actual financial data stored
-- **API Security**: Rate limiting and input validation
-- **Model Security**: Encrypted model artifacts
-- **Infrastructure**: HTTPS encryption and secure hosting
+- **Data Privacy**: No actual financial data stored or logged
+- **PCA Anonymization**: Original transaction features are mathematically transformed
+- **API Security**: Input validation and error handling
+- **Infrastructure**: HTTPS encryption and secure Render hosting
+- **Model Security**: Fallback demo mode for production reliability
 
 ---
 

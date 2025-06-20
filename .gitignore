@@ -1,3 +1,11 @@
+# Personal files
+*.pdf
+Screenshot*.png
+resume_text.txt
+
+# Portfolio (separate repo)
+portfolio/
+
 # Large ML files (download separately)
 *.pkl
 *.npy
@@ -13,3 +21,6 @@ __pycache__/
 # IDE
 .vscode/
 .idea/
+
+# React build files
+frontend/build/
