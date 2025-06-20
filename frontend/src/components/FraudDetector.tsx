@@ -11,7 +11,9 @@ import {
   Chip,
   CircularProgress,
   Divider,
-  Paper
+  Paper,
+  Tooltip,
+  IconButton
 } from '@mui/material';
 import { 
   Security, 
@@ -20,7 +22,9 @@ import {
   Error,
   PlayArrow,
   Refresh,
-  TrendingUp
+  TrendingUp,
+  Info,
+  HelpOutline
 } from '@mui/icons-material';
 import { ApiService, Transaction, FraudDetectionResponse } from '../services/ApiService';
 
@@ -104,6 +108,15 @@ const FraudDetector: React.FC<FraudDetectorProps> = ({ apiStatus }) => {
         Enter transaction details below to detect potential fraud using our trained XGBoost model.
       </Typography>
 
+      <Alert severity="info" icon={<Info />} sx={{ mb: 3 }}>
+        <Typography variant="body2">
+          <strong>About the Input Fields:</strong> The V1-V14 fields are anonymized features created using 
+          Principal Component Analysis (PCA) to protect sensitive transaction data. These mathematical 
+          transformations capture patterns from original features like merchant, location, and time while 
+          ensuring privacy. Use the sample buttons to see typical value ranges.
+        </Typography>
+      </Alert>
+
       <Grid container spacing={3}>
         {/* Input Form */}
         <Grid item xs={12} md={8}>
@@ -142,20 +155,32 @@ const FraudDetector: React.FC<FraudDetectorProps> = ({ apiStatus }) => {
                     value={transaction.Amount.toFixed(2)}
                     onChange={handleInputChange('Amount')}
                     variant="outlined"
+                    helperText="Transaction amount in dollars"
                   />
                 </Grid>
                 
                 {Array.from({ length: 14 }, (_, i) => (
                   <Grid item xs={12} sm={6} md={4} key={i}>
-                    <TextField
-                      fullWidth
-                      label={`V${i + 1}`}
-                      type="number"
-                      value={transaction[`V${i + 1}` as keyof Transaction].toFixed(4)}
-                      onChange={handleInputChange(`V${i + 1}` as keyof Transaction)}
-                      variant="outlined"
-                      inputProps={{ step: 0.0001 }}
-                    />
+                    <Tooltip 
+                      title={`PCA Component ${i + 1}: Anonymized feature capturing transaction patterns`}
+                      placement="top"
+                    >
+                      <TextField
+                        fullWidth
+                        label={
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            {`V${i + 1}`}
+                            <HelpOutline sx={{ fontSize: 16, color: 'text.secondary' }} />
+                          </Box>
+                        }
+                        type="number"
+                        value={transaction[`V${i + 1}` as keyof Transaction].toFixed(4)}
+                        onChange={handleInputChange(`V${i + 1}` as keyof Transaction)}
+                        variant="outlined"
+                        inputProps={{ step: 0.0001 }}
+                        helperText="PCA-transformed feature"
+                      />
+                    </Tooltip>
                   </Grid>
                 ))}
               </Grid>

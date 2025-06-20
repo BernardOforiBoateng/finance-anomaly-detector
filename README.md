@@ -23,15 +23,22 @@ A production-ready fraud detection system that identifies fraudulent financial t
 ## 🚀 **Live Demo**
 
 ### **🌐 Try the Live Application:**
-- **Dashboard**: [https://fraud-detector-demo.vercel.app](https://fraud-detector-demo.vercel.app)
-- **API Documentation**: [https://fraud-api.railway.app/docs](https://fraud-api.railway.app/docs)
-- **Health Check**: [https://fraud-api.railway.app/health](https://fraud-api.railway.app/health)
+- **Live Application**: [https://anomaly-detector-g2ex.onrender.com](https://anomaly-detector-g2ex.onrender.com)
+- **API Documentation**: [https://anomaly-detector-g2ex.onrender.com/docs](https://anomaly-detector-g2ex.onrender.com/docs)
+- **Health Check**: [https://anomaly-detector-g2ex.onrender.com/health](https://anomaly-detector-g2ex.onrender.com/health)
 
 ### **📱 Features Available:**
 - **Real-time Fraud Detection** - Analyze individual transactions
 - **Batch Processing Dashboard** - Test multiple transactions with analytics
 - **Model Insights** - View performance metrics and feature importance
 - **Risk Classification** - LOW/MEDIUM/HIGH/CRITICAL risk levels
+
+### **📊 Understanding the Input Fields:**
+The V1-V14 fields represent **anonymized principal components** from PCA (Principal Component Analysis) transformation:
+- **V1-V14**: These are dimensionality-reduced features that capture patterns in the original transaction data
+- **Amount**: The actual transaction amount in dollars
+- **Why PCA?**: For privacy protection, the original features (like merchant, location, time) have been transformed into these mathematical components
+- **Sample Values**: Use the "Normal Sample" or "Suspicious Sample" buttons to see typical value ranges
 
 ---
 
@@ -112,7 +119,7 @@ finance-anomaly-detector/
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/finance-anomaly-detector.git
+git clone https://github.com/BernardOforiBoateng/finance-anomaly-detector.git
 cd finance-anomaly-detector
 ```
 
@@ -274,11 +281,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 **Author**
 
-**Your Name**
-- 💼 [LinkedIn](https://linkedin.com/in/yourprofile)
-- 🐙 [GitHub](https://github.com/yourusername)
-- 📧 [Email](mailto:your.email@example.com)
-- 🌐 [Portfolio](https://yourportfolio.com)
+**Bernard Ofori Boateng**
+- 🐙 [GitHub](https://github.com/BernardOforiBoateng)
+- 💼 [LinkedIn](https://linkedin.com/in/bernardoforiboateng)
+- 📧 [Email](mailto:bernard.ofori.boateng@example.com)
+- 🌐 [Portfolio](https://bernardoforiboateng.com)
 
 ---
 
@@ -308,6 +315,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⭐ Star this repository if you found it helpful!**
 
-[**🚀 View Live Demo**](https://fraud-detector-demo.vercel.app) | [**📖 Documentation**](docs/) | [**🐙 Source Code**](https://github.com/yourusername/finance-anomaly-detector)
+[**🚀 View Live Demo**](https://anomaly-detector-g2ex.onrender.com) | [**📖 Documentation**](docs/) | [**🐙 Source Code**](https://github.com/BernardOforiBoateng/finance-anomaly-detector)
 
 </div>
